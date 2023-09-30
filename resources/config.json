@@ -1,0 +1,11 @@
+{
+    "apiLoginSecretRef": {
+      "name": "beget-credentials",
+      "key": "login"
+    },
+    "apiPasswdSecretRef": {
+      "name": "beget-credentials",
+      "key": "passwd"
+    },
+    "api": "http://localhost:8080"
+  }

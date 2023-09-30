@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: acmetest-star-borisd-ru
+spec:
+  secretName: star-borisd-ru-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  dnsNames:
+  - '*.borisd.ru'
+  issuerRef:
+    name: letsencrypt-staging-with-beget
+    kind: ClusterIssuer

@@ -1,0 +1,26 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging-with-beget
+spec:
+  acme:
+    # prod : https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: your-email@example.com
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    solvers:
+    - selector:
+        dnsZones:
+        - 'borisd.ru' # borisd.ru and *.borisd.ru
+      dns01:
+        webhook:
+          config:
+            apiLoginSecretRef:
+              name: beget-credentials
+              key: login
+            apiPasswdSecretRef:
+              name: beget-credentials
+              key: passwd
+          groupName: acme.borisd.ru
+          solverName: beget-unoficial

@@ -1,0 +1,10 @@
+{
+    "apiLoginSecretRef": {
+      "name": "beget-credentials",
+      "key": "login"
+    },
+    "apiPasswdSecretRef": {
+      "name": "beget-credentials",
+      "key": "passwd"
+    }
+  }
