@@ -1,58 +1,31 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png" height="256" width="256" alt="cert-manager project logo" />
+  <img src="https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png" height="32" width="32" alt="cert-manager project logo" />
 </p>
 
-# ACME webhook example
+# [Beget](beget.com) DNS01 webhook 
 
-The ACME issuer type supports an optional 'webhook' solver, which can be used
-to implement custom DNS01 challenge solving logic.
+## Installation
 
-This is useful if you need to use cert-manager with a DNS provider that is not
-officially supported in cert-manager core.
+- Read 
+    - https://cert-manager.io/docs/configuration/acme/dns01/
+    - https://cert-manager.io/docs/configuration/acme/
 
-## Why not in core?
+- install [cert-manager](https://github.com/cert-manager/cert-manager)
+    - `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml`
+- instal the issuer:
+    - **NOTE**: The kubernetes resources used to install the Webhook should be deployed within the same namespace as the cert-manager ("cert-manager" by default, check ./deploy/values.yaml).
+    - `helm install webhook-beget ./deploy/beget -f ./deploy/values.yaml -n cert-manager`
+- create a secret for beget API
+- create an issuer
+- request certificates
+- add the certificates to services
 
-As the project & adoption has grown, there has been an influx of DNS provider
-pull requests to our core codebase. As this number has grown, the test matrix
-has become un-maintainable and so, it's not possible for us to certify that
-providers work to a sufficient level.
+Follow ***an example*** for details: [testdata/resources](testdata/resources/README.md).
 
-By creating this 'interface' between cert-manager and DNS providers, we allow
-users to quickly iterate and test out new integrations, and then packaging
-those up themselves as 'extensions' to cert-manager.
+## Tests
 
-We can also then provide a standardised 'testing framework', or set of
-conformance tests, which allow us to validate the a DNS provider works as
-expected.
-
-## Creating your own webhook
-
-Webhook's themselves are deployed as Kubernetes API services, in order to allow
-administrators to restrict access to webhooks with Kubernetes RBAC.
-
-This is important, as otherwise it'd be possible for anyone with access to your
-webhook to complete ACME challenge validations and obtain certificates.
-
-To make the set up of these webhook's easier, we provide a template repository
-that can be used to get started quickly.
-
-### Creating your own repository
-
-### Running the test suite
-
-All DNS providers **must** run the DNS01 provider conformance testing suite,
-else they will have undetermined behaviour when used with cert-manager.
-
-**It is essential that you configure and run the test suite when creating a
-DNS01 webhook.**
-
-An example Go test file has been provided in [main_test.go](https://github.com/boryashkin/cert-manager-webhook-beget/blob/master/main_test.go).
-
-You can run the test suite with:
+You can run the webhook test suite with:
 
 ```bash
 $ TEST_ZONE_NAME=example.com. make test
 ```
-
-The example file has a number of areas you must fill in and replace with your
-own options in order for tests to pass.

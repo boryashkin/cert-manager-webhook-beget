@@ -36,12 +36,12 @@ kind: Ingress
 metadata:
   name: kuard
   annotations:
-    cert-manager.io/issuer: "letsencrypt-staging-with-beget"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging-with-beget"
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - acmetest.borisd.ru
+    - '*.borisd.ru'
     secretName: star-borisd-ru-tls
   rules:
   - host: acmetest.borisd.ru
