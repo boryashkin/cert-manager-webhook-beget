@@ -44,7 +44,7 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - acmetest2.borisd.ru
+    - '*.borisd.ru'
     secretName: star-borisd-ru-tls
   rules:
   - host: acmetest2.borisd.ru

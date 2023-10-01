@@ -25,6 +25,6 @@ For debugging use:
 - `kubectl logs webhook-your-pod-name -f`
 - `kubectl get certificate -A` then describe
 - `kubectl get certificaterequest -A` then describe
-- `kubectl get secret -A`
+- `kubectl get challenge -A` then describe
 
 

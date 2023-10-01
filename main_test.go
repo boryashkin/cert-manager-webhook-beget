@@ -6,9 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/cert-manager/cert-manager/test/acme/dns"
-
 	"github.com/boryashkin/cert-manager-webhook-beget/begetapi"
+	dns "github.com/cert-manager/cert-manager/test/acme"
 )
 
 var (
