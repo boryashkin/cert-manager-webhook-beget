@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png" height="32" width="32" alt="cert-manager project logo" />
 </p>
 
-# [Beget](beget.com) DNS01 webhook 
+# [Beget](https://beget.com/p259374) DNS01 webhook 
 
 ## Installation
 
