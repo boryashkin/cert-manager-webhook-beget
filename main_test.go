@@ -45,7 +45,7 @@ func TestRunsSuite(t *testing.T) {
 		dns.SetDNSServer("127.0.0.1:59351"),
 		dns.SetUseAuthoritative(false),
 	)
-	//need to uncomment and  RunConformance delete runBasic and runExtended once https://github.com/cert-manager/cert-manager/pull/4835 is merged
+
 	fixture.RunConformance(t)
 
 }

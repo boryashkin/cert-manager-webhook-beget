@@ -16,7 +16,7 @@ certManager:
 
 image:
   repository: ghcr.io/boryashkin/cert-manager-webhook-beget
-  tag: 0.9.dev
+  tag: 1.0.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""
