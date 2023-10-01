@@ -1,4 +1,4 @@
-package beget
+package begetapi
 
 import (
 	"context"
@@ -96,6 +96,7 @@ func (b *BegetApiMock) DnsChangeRecords(w http.ResponseWriter, req *http.Request
 
 	b.Lock()
 	b.txtRecords[v.FQDN] = v.Records
+	b.txtRecords[untrimTrimmedFqdn(v.FQDN)] = v.Records // for tests
 	b.Unlock()
 
 	w.WriteHeader(http.StatusOK)
@@ -261,4 +262,8 @@ func getJsonErrorChangeUnknownDnsRecords() string {
 
 func getJsonInvalidError() string {
 	return "Cannot parse the JSON input params"
+}
+
+func untrimTrimmedFqdn(fqdn string) string {
+	return fqdn + "."
 }

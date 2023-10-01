@@ -1,4 +1,4 @@
-package beget
+package begetapi
 
 import (
 	"fmt"

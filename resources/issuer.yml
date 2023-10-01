@@ -23,4 +23,4 @@ spec:
               name: beget-credentials
               key: passwd
           groupName: acme.borisd.ru
-          solverName: beget-unoficial
+          solverName: beget
