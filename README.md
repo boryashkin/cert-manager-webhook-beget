@@ -12,6 +12,10 @@
 
 - install [cert-manager](https://github.com/cert-manager/cert-manager)
     - `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml`
+    - OR
+        - `helm repo add boryashkin https://boryashkin.github.io/helm-charts/`
+        - `helm repo update`
+        - `helm install cert-beget boryashkin/cert-manager-beget-webhook`
 - instal the issuer:
     - **NOTE**: The kubernetes resources used to install the Webhook should be deployed within the same namespace as the cert-manager ("cert-manager" by default, check ./deploy/values.yaml).
     - `helm install webhook-beget ./deploy/beget -f ./deploy/values.yaml -n cert-manager`
