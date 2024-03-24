@@ -4,6 +4,10 @@
 
 # [Beget](https://beget.com/p259374) DNS01 webhook 
 
+## Status
+
+The module is active, but the underlying API is rarely changing, not much to update yet. Give it a star, if you're using it.
+
 ## Installation
 
 - Read 
